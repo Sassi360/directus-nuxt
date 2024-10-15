@@ -1,6 +1,8 @@
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <NuxtWelcome />
+    <UContainer class="p-6">
+      <p>Hello World</p>
+    </UContainer>
   </div>
 </template>
