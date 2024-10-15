@@ -1,6 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/ui', '@nuxt/eslint', '@bg-dev/nuxt-directus'],
+  modules: [
+    '@nuxt/ui',
+    '@nuxt/eslint',
+    '@bg-dev/nuxt-directus',
+    'nuxt-zod-i18n',
+    '@nuxtjs/i18n',
+  ],
 
   devtools: { enabled: true },
 
@@ -13,31 +19,25 @@ export default defineNuxtConfig({
 
   directus: {
     rest: {
-      baseUrl: 'http://localhost:8055',
-      nuxtBaseUrl: 'http://localhost:3000',
+      baseUrl: process.env.DIRECTUS_REST_BASE_URL!,
+      nuxtBaseUrl: process.env.DIRECTUS_REST_NUXT_BASE_URL!,
     },
     auth: {
       enabled: true,
-      mode: 'session', // Auth mode 'session' or 'cookie'
-      enableGlobalAuthMiddleware: false, // Enable auth middleware on every page
-      userFields: ['*'], // Select user fields
+      mode: 'session',
+      enableGlobalAuthMiddleware: false,
+      userFields: ['*'],
       refreshTokenCookieName: 'directus_refresh_token',
       sessionTokenCookieName: 'directus_session_token',
       loggedInFlagName: 'directus_logged_in',
       msRefreshBeforeExpires: 10000,
       redirect: {
-        login: '/auth/login', // Path to redirect when login is required
-        logout: '/auth/login', // Path to redirect after logout
-        home: '/home', // Path to redirect after successful login
-        resetPassword: '/auth/reset-password', // Path to redirect for password reset
+        login: '/auth/login',
+        logout: '/auth/login',
+        home: '/portal',
+        resetPassword: '/auth/reset-password',
         callback: '/auth/callback', // Path to redirect after login with provider
       },
-    },
-  },
-
-  eslint: {
-    config: {
-      stylistic: true,
     },
   },
 })
