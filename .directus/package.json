@@ -1,0 +1,30 @@
+{
+  "name": "nuxt-directus",
+  "version": "1.0.0",
+  "description": "Nuxt Directus Starter",
+  "scripts": {
+    "ci:prepare": "docker build . -t nuxt-directus/admin",
+    "init": "directus bootstrap",
+    "snapshot:apply-latest": "directus schema apply ./snapshots/\"$(ls snapshots | tail -1)\"",
+    "snapshot:create": "directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml",
+    "start": "pnpx directus start",
+    "deploy": "railway run pnpm run snapshot:apply-latest",
+    "upgrade:migration": "pnpx directus database migrate:latest"
+  },
+
+  "dependencies": {
+    "directus": "^11.1.1",
+    "pg": "^8.13.0"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.56.10",
+    "@types/node": "^20.12.7",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5",
+    "typescript": "5.3.3"
+  }
+}

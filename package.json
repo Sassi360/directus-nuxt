@@ -10,7 +10,6 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
-
   },
   "dependencies": {
     "@nuxt/ui": "^2.18.7",
@@ -19,6 +18,7 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "@bg-dev/nuxt-directus": "^2.4.5",
     "@nuxt/eslint": "^0.6.0",
     "eslint": "^9.12.0",
     "typescript": "^5.6.3"
