@@ -1,19 +1,26 @@
 <script setup lang="ts">
-import type { FormSubmitEvent } from '#ui/types'
+import type { FormSubmitEvent } from '#ui/types';
 import { loginSchema, type LoginSchema } from '~/schema/auth/login';
 
 const { login } = useDirectusAuth()
-
+const toast = useToast()
 
 const state = reactive({
   email: '',
   password: '',
 })
 
-
 async function onSubmit(event: FormSubmitEvent<LoginSchema>) {
   try {
     const result = await login(event.data.email, event.data.password)
+
+    toast.add({
+      title: 'Login Successful',
+      description: 'You have been logged in successfully.',
+      icon: 'i-heroicons-check-circle',
+      timeout: 5000,
+    })
+
     return result
 
   } catch (e) {

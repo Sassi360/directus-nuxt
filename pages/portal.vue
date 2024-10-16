@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { user } = useDirectusAuth()
 
-console.log(user)
+definePageMeta({ middleware: "auth"});
 
 </script>
 

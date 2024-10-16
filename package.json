@@ -9,7 +9,11 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "directus:init": "cd .directus && pnpx directus bootstrap",
+    "directus:start": "cd .directus && pnpx directus start",
+    "directus:snapshot-latest": "directus schema apply ./snapshots/\"$(ls snapshots | tail -1)\"",
+    "directus:snapshot-create": "directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml"
   },
   "dependencies": {
     "@nuxt/ui": "^2.18.7",

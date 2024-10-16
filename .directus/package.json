@@ -7,7 +7,7 @@
     "init": "directus bootstrap",
     "snapshot:apply-latest": "directus schema apply ./snapshots/\"$(ls snapshots | tail -1)\"",
     "snapshot:create": "directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml",
-    "start": "pnpx directus start",
+    "start": "directus start",
     "deploy": "railway run pnpm run snapshot:apply-latest",
     "upgrade:migration": "pnpx directus database migrate:latest"
   },

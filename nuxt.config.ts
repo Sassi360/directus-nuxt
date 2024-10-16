@@ -22,9 +22,12 @@ export default defineNuxtConfig({
       baseUrl: process.env.DIRECTUS_REST_BASE_URL!,
       nuxtBaseUrl: process.env.DIRECTUS_REST_NUXT_BASE_URL!,
     },
+    graphql: {
+      enabled: false
+    },
     auth: {
       enabled: true,
-      mode: 'cookie',
+      mode: 'session',
       enableGlobalAuthMiddleware: true,
       userFields: ['*'],
       refreshTokenCookieName: 'directus_refresh_token',
