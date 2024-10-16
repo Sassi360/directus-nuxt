@@ -24,8 +24,8 @@ export default defineNuxtConfig({
     },
     auth: {
       enabled: true,
-      mode: 'session',
-      enableGlobalAuthMiddleware: false,
+      mode: 'cookie',
+      enableGlobalAuthMiddleware: true,
       userFields: ['*'],
       refreshTokenCookieName: 'directus_refresh_token',
       sessionTokenCookieName: 'directus_session_token',
