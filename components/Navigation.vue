@@ -1,4 +1,10 @@
 <script lang="ts" setup>
+const { logout } = useDirectusAuth()
+
+const toggleSignOff = async () => {
+  logout()
+  navigateTo('/')
+}
 
 </script>
 
@@ -11,6 +17,12 @@
       </UButton>
       <UButton to="/auth/register">
         Register
+      </UButton>
+    </div>
+
+    <div class="flex gap-x-6">
+      <UButton variant="link" @click="toggleSignOff">
+        Log Out
       </UButton>
     </div>
   </nav>
