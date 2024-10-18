@@ -1,7 +1,8 @@
 import type { NotificationColor } from '#ui/types';
-const toast = useToast()
 
 export const useShowToast = (title: string, description: string, icon: string, color: string) => {
+  const toast = useToast()
+
   return toast.add({
     title,
     description,

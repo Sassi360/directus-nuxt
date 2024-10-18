@@ -5,4 +5,4 @@ export const loginSchema = z.object({
   password: z.string().min(8, 'Must be at least 8 characters'),
 })
 
-export type LoginSchema = z.input<typeof loginSchema>
+export type LoginSchema = z.infer<typeof loginSchema>

@@ -9,13 +9,11 @@ const state = reactive({
   password: '',
 })
 
-
 async function onSubmit(event: FormSubmitEvent<LoginSchema>) {
   try {
-    const result = await login(event.data.email, event.data.password);
+    await login(event.data.email, event.data.password);
 
     useShowToast('Login Successful', 'You have been logged in successfully.', 'i-heroicons-check-circle', '');
-    return result;
 
   } catch (error) {
     useShowToast('Login Failed', 'Please check your credentials and try again.', 'i-heroicons-exclamation-circle', 'red');
