@@ -3,30 +3,23 @@ import type { FormSubmitEvent } from '#ui/types';
 import { loginSchema, type LoginSchema } from '~/schema/auth/login';
 
 const { login } = useDirectusAuth()
-const toast = useToast()
 
 const state = reactive({
   email: '',
   password: '',
 })
 
+
 async function onSubmit(event: FormSubmitEvent<LoginSchema>) {
   try {
-    const result = await login(event.data.email, event.data.password)
+    const result = await login(event.data.email, event.data.password);
 
-    toast.add({
-      title: 'Login Successful',
-      description: 'You have been logged in successfully.',
-      icon: 'i-heroicons-check-circle',
-      timeout: 5000,
-    })
+    useShowToast('Login Successful', 'You have been logged in successfully.', 'i-heroicons-check-circle', '');
+    return result;
 
-    return result
-
-  } catch (e) {
-    const code = e.data.errors[0].extensions.code
-    console.log(code)
-
+  } catch (error) {
+    useShowToast('Login Failed', 'Please check your credentials and try again.', 'i-heroicons-exclamation-circle', 'red');
+    console.error(error);
   }
 }
 </script>
